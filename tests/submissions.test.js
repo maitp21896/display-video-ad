@@ -57,3 +57,16 @@ test('website pages use same-origin API and no Google browser calls',()=>{
   const html=fs.readFileSync(file,'utf8');assert.ok(html.includes("fetch('/api/submissions'"));assert.ok(!html.includes('script.google.com'));assert.ok(!html.includes('google.script.run'));
  }
 });
+
+test('development server returns complete student and trainer HTML',async t=>{
+ const server=require('../scripts/dev-server');
+ await new Promise(r=>server.listen(0,'127.0.0.1',r));t.after(()=>new Promise(r=>server.close(r)));
+ const base='http://127.0.0.1:'+server.address().port;
+ for(const [route,marker] of [['/','id="workspace"'],['/trainer','id="students"']]){
+  const response=await fetch(base+route,{signal:AbortSignal.timeout(2000)});
+  const body=await response.text();
+  assert.equal(response.status,200);assert.ok(body.includes(marker));
+  assert.equal(Number(response.headers.get('content-length')),Buffer.byteLength(body));
+ }
+ assert.equal((await fetch(base+'/missing')).status,404);
+});
