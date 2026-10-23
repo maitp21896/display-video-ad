@@ -14,7 +14,7 @@ async function api(t, upstream) {
 }
 test('partial submission is normalized, preserving answer text',()=>{
  const data=validateSubmission(valid);assert.equal(data.name,'Nguyễn An');assert.equal(data.answers.length,1);
- assert.equal(data.answers[0].label,'01 · Lựa chọn phương án');assert.equal(data.answers[0].answer,valid.answers[0].answer);
+ assert.equal(data.answers[0].label,'Case 1: Chọn cách mua quảng cáo thời trang');assert.equal(data.answers[0].answer,valid.answers[0].answer);
 });
 test('invalid and duplicate case submissions are rejected',()=>{
  for(const data of [{...valid,name:' '},{...valid,answers:[]},{...valid,answers:[{id:'unknown',answer:'x'}]},{...valid,answers:[valid.answers[0],valid.answers[0]]}])assert.throws(()=>validateSubmission(data));
