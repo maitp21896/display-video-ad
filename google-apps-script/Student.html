@@ -1,0 +1,193 @@
+<!doctype html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tomorrow Marketers | Case Lab</title><style>
+:root{--pink:#c84880;--dark:#1b2333;--muted:#667085;--line:#e6e7ec;--bg:#f7f7fa;--green:#147d60}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--dark);font:15px/1.55 system-ui,-apple-system,'Segoe UI',sans-serif}.header{background:white;border-bottom:1px solid var(--line);padding:18px max(22px,calc((100vw - 1200px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-size:22px;font-weight:850;letter-spacing:-.7px}.brand b{color:var(--pink)}.header small{color:var(--muted)}main{max-width:1200px;padding:26px 20px 60px;margin:auto}.eyebrow{color:var(--pink);font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:1.1px}h1{margin:5px 0 7px;line-height:1.25;font-size:29px}h2{font-size:19px;margin:0 0 13px}p{margin:8px 0}.muted{color:var(--muted)}.tabs{display:flex;gap:9px;overflow:auto;padding:14px 0 23px}.tab{white-space:nowrap;border:1px solid var(--line);background:white;color:#344054;padding:10px 14px;border-radius:11px;cursor:pointer;font-weight:650}.tab.active{background:var(--pink);color:white;border-color:var(--pink)}.layout{display:grid;grid-template-columns: minmax(0,1.52fr) minmax(305px,1fr);gap:18px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:15px;padding:22px;margin-bottom:18px;box-shadow:0 3px 14px #10182805}.situation{background:#fff5f9;border-left:4px solid var(--pink);padding:13px 17px;border-radius:8px}.metric-row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}.metric{border:1px solid var(--line);border-radius:10px;padding:9px 13px;min-width:130px;flex:1}.metric strong{display:block;font-size:18px}.metric span{font-size:12px;color:var(--muted)}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:13px}.controls label{font-size:13px;color:var(--muted)}select,button,textarea,input{font:inherit}select{background:white;border:1px solid #cfd2dc;border-radius:8px;padding:9px 10px;max-width:100%}button{cursor:pointer}table{width:100%;border-collapse:collapse;font-size:13px;white-space:nowrap}th,td{text-align:right;padding:10px 10px;border-bottom:1px solid var(--line)}th:first-child,td:first-child{text-align:left;white-space:normal;min-width:135px}th{background:#f9e6ef;color:#5b2440;cursor:pointer;user-select:none;position:sticky;top:0}tbody tr:hover{background:#fff8fb}.table-wrap{overflow:auto;max-height:415px;border:1px solid var(--line);border-radius:10px}.note{font-size:12px;color:var(--muted);margin-top:10px}.questions{padding-left:20px;margin:8px 0}.questions li{margin-bottom:9px}.answer{display:block;width:100%;border:1px solid #cfd2dc;border-radius:9px;resize:vertical;padding:12px;min-height:108px;outline-color:var(--pink);margin:8px 0 18px}.answerlabel{font-size:14px;font-weight:700}.actions{display:flex;flex-wrap:wrap;gap:9px}.primary{background:var(--pink);color:#fff;border:0;border-radius:9px;padding:10px 15px;font-weight:700}.secondary{background:white;color:var(--dark);border:1px solid #cfd2dc;border-radius:9px;padding:10px 15px}.tag{display:inline-block;padding:3px 8px;border-radius:6px;background:#f0f1f5;color:#667085;font-size:11px}.tip{border-left:3px solid #e0b1c7;padding-left:11px;margin-top:18px;font-size:13px;color:#475467}.hidden{display:none}.callout{color:var(--green);font-size:13px;min-height:19px}.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:17px}@media(max-width:850px){.layout{grid-template-columns:1fr}.header{padding:15px 20px}h1{font-size:24px}}@media print{.tabs,.controls,.actions,.header small{display:none}.layout{display:block}.panel{break-inside:avoid}body{background:white}.table-wrap{max-height:none;overflow:visible}textarea{min-height:85px}}
+
+.situation{white-space:pre-line}.questionbox{margin:12px 0;padding:14px;background:#fff5f9;border:1px solid #f2c7da;border-radius:9px;font-weight:750}.source{font-size:12px;color:#667085;margin-top:12px}textarea{min-height:155px}td{text-align:left;white-space:nowrap!important}th{text-align:left}th:first-child,td:first-child{min-width:125px}.table-wrap{max-height:520px}.dataalert{border-left:3px solid #b77b22;background:#fffaf0;padding:9px 12px;margin-top:12px;font-size:13px}.answerlabel{display:block;margin-top:12px}
+/* Student workspace: presentation only; case data and behavior remain unchanged. */
+:root{--pink:#b92d69;--dark:#242330;--muted:#696773;--line:#e9e5e9;--bg:#f7f6f8}
+body{font-size:14px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.header{min-height:78px;padding:18px max(28px,calc((100vw - 1400px)/2));gap:16px}
+.brand{font-size:19px;letter-spacing:-.65px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.brand .tag{margin-left:12px;letter-spacing:1.4px;font-size:10px;background:#fbecf2;color:var(--pink);border:1px solid #f1d4e1;padding:5px 9px}
+.header small{font-size:12px;white-space:nowrap}
+main{max-width:1400px;padding:34px 28px 64px}
+.eyebrow{font-size:10px;letter-spacing:1.7px;font-weight:750}
+h1{font-size:clamp(25px,2.5vw,34px);letter-spacing:-1px;margin:8px 0 10px;line-height:1.3}
+main>p.muted{margin:0;font-size:14px}
+h2{font-size:18px;line-height:1.5;letter-spacing:-.3px;margin:7px 0 18px}
+#caseTitle{font-size:18px;line-height:1.55}
+.tabs{gap:6px;padding:24px 0 25px;scrollbar-width:thin}
+.tab{font-size:12px;padding:11px 14px;border-radius:8px;transition:background .15s,border-color .15s;flex-shrink:0}
+.tab:hover{border-color:#d68ba9;background:#fff5f9}
+.tab.active{background:var(--pink);border-color:var(--pink);color:#fff;box-shadow:0 3px 8px #b92d691a}
+.layout{grid-template-columns:minmax(0,1fr) minmax(290px,350px);gap:22px}
+.layout>section,.layout>aside{min-width:0}
+.panel{border-radius:12px;padding:24px;margin-bottom:22px;box-shadow:0 3px 12px #24233003}
+.situation{background:#faf9fb;border-left:3px solid #d680a5;border-radius:0 8px 8px 0;padding:17px 19px;font-size:14px;line-height:1.85;overflow-wrap:anywhere}
+.questionbox{margin:18px 0 0;background:#fff5f9;border:1px solid #f0d6e1;border-radius:8px;padding:16px 18px;font-size:13px;line-height:1.75;color:#87294f}
+.controls{gap:8px 12px;margin:0 0 16px}
+.controls label{color:var(--dark);font-weight:600;font-size:12px}
+#filter{font-size:13px;padding:10px 12px!important;border-color:#ded9e0!important;min-width:0!important;flex:1;max-width:320px;background:#fff}
+.controls>.muted{font-size:11px;flex-basis:100%}
+.table-wrap{border-radius:8px;max-height:520px;scrollbar-width:thin;scrollbar-color:#d4c6ce #faf9fb}
+table{font-size:12px;line-height:1.6;font-variant-numeric:tabular-nums}
+th,td{padding:13px 14px;border-bottom-color:#eeebef}
+th{background:#f8edf2;color:#75334f;font-weight:650;z-index:1}
+th:hover{background:#f2dce6}
+th:first-child,td:first-child{min-width:145px}
+tbody tr:nth-child(even){background:#fcfbfd}
+tbody tr:hover{background:#fff4f8}
+aside{position:sticky;top:24px}
+aside .panel{border-top:3px solid var(--pink)}
+.answerlabel{font-size:12px;color:#514b59;margin-top:22px}
+.answer{min-height:330px;padding:14px;border:1px solid #ded9e0;border-radius:8px;background:#fdfcfe;line-height:1.8;font-size:14px;margin:9px 0 12px;transition:border-color .15s,box-shadow .15s}
+.answer::placeholder{color:#95909c}
+.answer:focus{outline:none;border-color:var(--pink);box-shadow:0 0 0 3px #b92d6910;background:#fff}
+.source{font-size:11px;line-height:1.7;color:var(--muted);border-top:1px solid var(--line);padding-top:13px;margin:0}
+button:focus-visible,input:focus-visible{outline:3px solid #b92d6940;outline-offset:3px}
+@media(min-width:851px) and (max-width:1100px){.layout{grid-template-columns:minmax(0,1fr) 290px;gap:16px}.panel{padding:20px}.tab{padding:10px 11px}}
+@media(max-width:850px){.header{padding:16px 20px}.layout{grid-template-columns:minmax(0,1fr)}aside{position:static}main{padding:26px 20px 40px}.tabs{padding:20px 0}.panel{padding:20px;margin-bottom:16px}.answer{min-height:240px}}
+@media(max-width:480px){.header{align-items:flex-start;padding:16px}.brand{font-size:15px;gap:4px}.brand .tag{font-size:8px;margin-left:4px;padding:3px 6px}.header{flex-wrap:wrap;gap:6px}.header small{font-size:11px}main{padding:24px 14px 32px}h1{font-size:26px;letter-spacing:-.7px}.panel{padding:18px 16px}#caseTitle{font-size:16px}.situation{padding:14px;font-size:13px}.questionbox{padding:13px;font-size:12px}.controls label{flex-basis:100%}#filter{max-width:none;width:100%}.tabs{margin-right:-14px;padding-right:14px}.table-wrap{max-height:420px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media print{aside{position:static}.answer{min-height:155px}.panel{box-shadow:none}.table-wrap{max-height:none;overflow:visible}}
+
+.submit-block{margin-top:18px}.submit-block .primary{width:100%}.submit-hint{font-size:12px;color:var(--muted);margin:9px 0 0}.form-error{color:#a32347;font-size:13px}.form-error:empty{display:none}
+.submit-dialog{width:min(460px,calc(100% - 32px));border:1px solid var(--line);border-radius:16px;padding:26px;color:var(--dark);box-shadow:0 24px 80px #24233026}.submit-dialog::backdrop{background:#24233080}.submit-dialog h2{font-size:23px;margin:6px 0 10px}.submit-dialog input{width:100%;border:1px solid #ded9e0;border-radius:8px;padding:12px;margin:8px 0}.dialog-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}.submit-dialog label{display:block;font-weight:650;margin-top:20px}.submit-dialog p{font-size:13px}.receipt{max-width:900px}.receipt[hidden],main[hidden]{display:none}.success-mark{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#eaf5ef;color:var(--green);font-size:26px;margin-bottom:18px}.receipt h1{font-size:30px}.receipt-meta{display:flex;flex-wrap:wrap;gap:8px 24px;margin:20px 0;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);font-size:13px}.receipt-answer{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.85}.receipt .panel h2{color:var(--pink)}.receipt .secondary{margin-bottom:22px}.receipt-notice{font-size:13px;color:var(--muted)}
+</style></head><body><header class="header"><div class="brand">TOMORROW <b>MARKETERS</b> <span class="tag">CASE LAB</span></div><small>Bài tập thực hành</small></header><main id="workspace"><div class="eyebrow">CASE STUDY</div><h1>Đọc case · Khám phá số liệu · Viết bài làm</h1><p class="muted">Chọn case study, khám phá bảng số liệu và ghi lại câu trả lời của bạn.</p><div class="tabs" id="tabs"></div><div class="layout"><section><div class="panel"><div class="eyebrow">01 / Tình huống</div><h2 id="caseTitle"></h2><div class="situation" id="situation"></div><div id="questionArea"></div></div><div class="panel"><div class="eyebrow">02 / Phân tích số liệu</div><h2>Bảng số liệu</h2><div class="controls"><label for="filter">Tìm trong bảng:</label><input id="filter" placeholder="Nhập tên mẫu / nhóm ..." style="padding:8px;border:1px solid #cfd2dc;border-radius:8px;min-width:220px"><span class="muted">Nhấn tiêu đề cột để sắp xếp.</span></div><div class="table-wrap"><table><thead id="thead"></thead><tbody id="tbody"></tbody></table></div></div></section><aside><div class="panel"><div class="eyebrow">03 / Bài làm học viên</div><h2>Nhận xét / Phương án</h2><label class="answerlabel" for="answer">Phần trả lời</label><textarea class="answer" id="answer" placeholder="Nhập câu trả lời của bạn tại đây ..."></textarea><p class="source">Bài làm tự lưu trong trình duyệt của thiết bị này.</p><div class="submit-block"><button class="primary" id="openSubmit" type="button">Nộp bài</button><p class="submit-hint">Có thể nộp các case đã làm, không cần hoàn thành tất cả.</p><p class="form-error" id="submitError" role="alert"></p></div></div></aside></div></main>
+<main id="receipt" class="receipt" hidden aria-labelledby="receiptTitle">
+<div class="panel"><div class="success-mark" aria-hidden="true">✓</div><div class="eyebrow">BÀI LÀM HỌC VIÊN</div><h1 id="receiptTitle" tabindex="-1">Nộp bài thành công</h1><p class="receipt-notice">Bài nộp đã được ghi vào Google Sheets để trainer xem lại.</p><div class="receipt-meta"><span>Học viên: <strong id="receiptName"></strong></span><span id="receiptTime"></span><span id="receiptCount"></span></div><p>Các câu trả lời đã nộp được tổng hợp bên dưới. Bạn có thể tiếp tục làm các case tiếp theo và nộp lại.</p></div>
+<button type="button" class="secondary" id="continueWorking">Tiếp tục làm bài</button><div id="receiptAnswers"></div>
+</main>
+<dialog id="submitDialog" class="submit-dialog" aria-labelledby="submitTitle" aria-describedby="submitDescription"><form id="submitForm"><div class="eyebrow">XÁC NHẬN BÀI LÀM</div><h2 id="submitTitle">Nộp bài của bạn</h2><p id="submitDescription"></p><div id="nameEntry"><label for="studentName">Họ và tên học viên</label><input id="studentName" name="studentName" autocomplete="name" required maxlength="120" placeholder="Nhập họ và tên của bạn" aria-describedby="nameError" autofocus><p class="muted">Tên được ghi nhớ trên trình duyệt này cho các lần nộp tiếp theo.</p></div><div id="rememberedStudent" hidden><p>Học viên: <strong id="rememberedName"></strong></p><button type="button" class="secondary" id="changeStudent">Đổi tên</button></div><p class="form-error" id="nameError" role="alert"></p><p class="muted">Bài nộp sẽ được gửi đến Google Sheets của lớp. Các bản nháp trên thiết bị vẫn được giữ nguyên.</p><p id="sendingStatus" role="status" aria-live="polite"></p><p class="form-error" id="storageError" role="alert"></p><div class="dialog-actions"><button type="button" class="secondary" id="cancelSubmit">Quay lại</button><button type="button" class="primary" id="confirmSubmit">Xác nhận nộp bài</button></div></form></dialog>
+<script>
+const cases=[{"id": "reach", "label": "01 · Lựa chọn phương án", "title": "CASE STUDY: CÁCH NÀO LÀ TỐT NHẤT DƯỚI ĐÂY?", "situation": "DOANH NGHIỆP A, NGÀNH HÀNG THỜI TRANG, QUY MÔ VỪA\nMục tiêu: Tối đa hóa độ nhận biết về chương trình khuyến mãi tri ân khách hàng dịp cuối năm trên sàn thương mại điện tử Shopee. Đối tượng KH là Nam-Nữ 18-45, ở TP.HCM và Hà Nội\nTài nguyên quảng cáo: Video ngắn và Banner về thông tin khuyến mãi", "question": "CÁCH NÀO LÀ TỐT NHẤT DƯỚI ĐÂY?", "columns": ["Hình thức mua", "Phương án", "Đơn vị", "Chi phí / Công thức gốc", "Mô tả gốc", "CPR gốc"], "rows": [["Mua theo thời gian", "VNEXPRESS CPD", "CPD share 2 / Fashion", "120 triệu x 3 ngày = 360 triệu", "Ước tính tiếp cận 1 triệu người x 3 ngày = 3 triệu tại trang Chuyên mục Thời trang. Đảm bảo sự an toàn thương hiệu", "120đ"], ["Mua theo mục tiêu", "YouTube TrueView for Reach campaign", "YouTube CPM", "6 x 1.8 x 1.5 x 23.5 = 380tr VND\nFre. x Reach x CPM x Tỉ giá VND/USD", "Tiếp cận 1.8 triệu người dùng unique; Đảm bảo targeting theo độ tuổi/giới tính/vị trí địa lý; Đảm bảo sự an toàn thương hiệu", "211đ"], ["Quảng cáo cao cấp (Premium)", "YouTube CPD Masthead", "YouTube CPD", "1 Tỷ đồng (sau chiết khấu) cho 1 ngày quảng cáo chiếm trọn trang chủ YouTube Việt Nam", "Ước tính tiếp cận 8 triệu người dùng Việt Nam truy cập trang chủ YouTube vào 1 ngày", "125đ"]], "source": "Slide gốc 1 — CASE STUDY: CÁCH NÀO LÀ TỐT NHẤT DƯỚI ĐÂY?", "note": "Giữ nguyên số liệu và cách diễn đạt từ ảnh nguồn. Số tiếp cận 3 triệu trong 3 ngày không được xác nhận là 3 triệu người duy nhất."}, {"id": "creative", "label": "02 · Thông điệp / kích thước", "title": "CASE STUDY: NHIỀU THÔNG ĐIỆP / KÍCH THƯỚC", "situation": "SITUATION\nApp Academy là một trung tâm đào tạo chuyên viên kỹ thuật phần mềm (Coding/IT). DN muốn tăng số lượng học viên bằng chiến dịch quảng cáo Hiển thị và dẫn người dùng về Website để xem thông tin về chương trình.\n\nACTION\nDN muốn thử nghiệm nhiều thông điệp quảng cáo khác nhau về chất lượng đầu ra của người học. Sau 1 tháng, DN đạt kết quả như bảng bên dưới.", "question": "DN NÊN TỐI ƯU HÓA CHO THÁNG TIẾP THEO NHƯ THẾ NÀO?", "columns": ["Ad Content", "Size", "Ad group", "Imp.", "Click", "CTR", "Benchmark CTR", "Budget (VND)"], "rows": [["Tangluong-1A", "300 x 250", "Tăng lương 40%", "26,387", "225", "0.9%", "0.8%", "675,000"], ["Tangluong-1B", "300 x 600", "Tăng lương 40%", "1,203", "6", "0.5%", "0.8%", "19,200"], ["Thunhap-2A", "300 x 250", "Thu nhập 100K", "11,808", "38", "0.3%", "0.8%", "144,400"], ["Thunhap-2B", "300 x 600", "Thu nhập 100K", "16,650", "220", "1.3%", "0.8%", "550,000"], ["Nhandoi-3A", "300 x 250", "X2 Thu Nhập", "42,219", "687", "1.6%", "0.8%", "1,607,580"], ["Nhandoi-3B", "300 x 600", "X2 Thu Nhập", "22,008", "128", "0.6%", "0.8%", "422,400"], ["Total", "", "", "120,275", "1,304", "1.1%", "0.8%", "3,418,580"]], "source": "Slide gốc 2 — CASE STUDY: NHIỀU THÔNG ĐIỆP / KÍCH THƯỚC", "note": "Giữ nguyên các số hiển thị và dòng Total trong slide gốc; CTR là số gốc đã làm tròn."}, {"id": "traffic", "label": "03 · Traffic & đơn hàng", "title": "CASE STUDY: TRAFFICS VỀ WEBSITE & ĐƠN HÀNG", "situation": "SITUATION\nUniqlo duy trì hoạt động bán hàng thông qua 2 kênh Offline (cửa hàng) và Online (website). DN sử dụng Display Ads để kích thích hành vi mua sắm cho các sản phẩm giảm giá theo mùa, hoặc giới thiệu về bộ sưu tập mới\n\nTASK\nKPI đặt ra của doanh nghiệp:\n1. Tỉ lệ visit: Min 30%\n2. Time-on-site: 30 giây\n3. Tỉ lệ order/visit: 5%", "question": "ĐÁNH GIÁ VỀ KẾT QUẢ CHẠY CỦA DOANH NGHIỆP & ĐƯA ĐỀ XUẤT NẾU CÓ", "columns": ["Ad Content", "Size", "Imp.", "Click", "CTR", "Visit", "Visit rate", "Avg. time-on-site", "Order"], "rows": [["New collection", "300x250", "274,555", "1,991", "0.73%", "242", "12%", "40", "2"], ["New collection", "728x90", "451,666", "1,611", "0.36%", "348", "22%", "104", "22"], ["New collection", "500x500", "192,532", "1,834", "0.95%", "121", "7%", "172", "35"], ["Discount 30%", "300x250", "377,143", "1,960", "0.52%", "422", "22%", "31", "0"], ["Discount 30%", "728x90", "341,407", "298", "0.09%", "210", "70%", "35", "0"], ["Discount 30%", "500x500", "334,224", "1,475", "0.44%", "620", "42%", "62", "31"], ["Full store", "300x250", "213,530", "107", "0.05%", "1", "1%", "76", "0"], ["Full store", "728x90", "281,204", "892", "0.32%", "178", "20%", "152", "18"], ["Full store", "500x500", "379,506", "367", "0.10%", "413", "113%", "130", "6"], ["Total", "", "1,927,014", "5,099", "0.3%", "1,844", "36%", "89", "55"]], "source": "Slide gốc 3 — CASE STUDY: TRAFFICS VỀ WEBSITE & ĐƠN HÀNG", "note": "Dữ liệu nguồn có điểm không khớp: 413 Visit > 367 Click tại Full store 500x500; cộng Order theo dòng = 114 nhưng Total slide ghi 55; các tổng Imp/Click/Visit cũng không bằng tổng từng dòng. Giữ nguyên nguồn, không tự hiệu chỉnh."}, {"id": "cpc", "label": "04 · Giá thầu & tỷ lệ click", "title": "CASE STUDY: TỐI ƯU HÓA TRÊN GIÁ THẦU VÀ TỈ LỆ CLICK", "situation": "SITUATION\nDHC Vietnam chuyên cung cấp thực phẩm chức năng nhập khẩu với nhiều ưu đãi. Nhân dịp sinh nhật 2 năm, DN chạy chiến dịch Khuyến mãi đến 80% trên Website\n\nHÀNH TRÌNH\nQUẢNG CÁO HIỂN THỊ TRÊN CÁC TRANG BÁO LỚN → WEBSITE DHC VỚI DANH SÁCH ƯU ĐÃI → ĐẶT HÀNG TRỰC TIẾP TRÊN WEB THÔNG QUA FORM HOẶC CHAT / ĐẾN CỬA HÀNG GẦN NHẤT ĐỂ MUA TRỰC TIẾP", "question": "", "columns": ["Campaign", "Ad group", "Ad content", "Size", "Placement", "Imp.", "CPC", "CTR", "Click", "Budget", "% Budget"], "rows": [["B-day Prospecting", "Promotion", "Discount 30%", "300x250", "Beauty website", "102,810", "4,600", "1.1%", "1,131", "5,202,600", "18%"], ["B-day Prospecting", "Promotion", "Discount 50%", "300x250", "Beauty website", "507,730", "4,100", "0.2%", "1,017", "4,169,700", "14%"], ["B-day Prospecting", "Promotion", "Discount 80%", "300x250", "Beauty website", "86,530", "5,200", "0.8%", "709", "3,686,800", "13%"], ["B-day Prospecting", "New product", "Viên chống nắng", "300x250", "Beauty website", "47,180", "3,000", "1.9%", "890", "2,670,000", "9%"], ["B-day Prospecting", "New product", "Viên dưỡng ẩm", "300x250", "Beauty website", "178,030", "2,800", "0.8%", "1,362", "3,813,600", "13%"], ["B-day Prospecting", "New product", "Viên sáng da", "300x250", "Beauty website", "578,950", "2,750", "0.0%", "50", "137,500", "0%"], ["B-day Prospecting", "Loyalty", "Tích điểm KH cũ", "300x250", "Beauty website", "35,270", "6,600", "0.1%", "47", "310,200", "1%"], ["B-day Prospecting", "Loyalty", "Miễn phí ship", "300x250", "Beauty website", "91,500", "6,800", "1.0%", "890", "6,052,000", "21%"], ["Re-targeting", "Viewed Promo", "Ưu đãi có hạn", "300x250", "Beauty website", "27,210", "8,000", "0.3%", "77", "616,000", "2%"], ["Re-targeting", "Viewed New product", "Dùng thử ngay", "300x250", "Beauty website", "62,550", "7,800", "0.3%", "189", "1,474,200", "5%"], ["Re-targeting", "Viewed Loyalty", "Càng mua càng lợi", "300x250", "Beauty website", "58,640", "7,200", "0.2%", "115", "828,000", "3%"], ["Total", "", "", "", "", "1,776,400", "4,471", "0.36%", "6,477", "28,960,000", ""]], "source": "Slide gốc 4 — CASE STUDY: TỐI ƯU HÓA TRÊN GIÁ THẦU VÀ TỈ LỆ CLICK", "note": "Slide gốc không có câu hỏi dạng câu. Giữ nguyên dòng Total và những giá trị CTR/CPC đã ghi; một số dòng Total hoặc CTR không khớp phép tính từ các dòng chi tiết."}, {"id": "leads", "label": "05 · Lead generation", "title": "CASE STUDY: LEAD GENERATION", "situation": "SITUATION\nHiruscar ra mắt tuýp gel trị sẹo lồi mới (10g) và bắt đầu chiến dịch MỜI KHÁCH HÀNG DÙNG THỬ SẢN PHẨM để lấy review sau khi sử dụng\n\nTASK\nDN chạy chiến dịch Display Ads để dẫn người dùng về form đăng kí trên website trong vòng 1 tháng, mục tiêu đạt 1,000 người đăng kí thành công và có Xác nhận từ Sale (Success Registration)", "question": "", "columns": ["Campaign", "Targeting", "Audience Pool", "Imp.", "CPC", "CTR", "Click", "Lead", "Success"], "rows": [["Trial Leads", "Mass, Nam 18-45", "18,000,000", "1,120,008", "3,000", "0.3%", "3,360", "168", "84"], ["Trial Leads", "Nam, 18-45, Thể thao", "6,800,000", "500,703", "4,400", "0.8%", "4,006", "601", "421"], ["Trial Leads", "Nam, 18-45, Sức khỏe", "10,000,000", "1,503", "4,800", "0.0%", "0", "0", "0"], ["Trial Leads", "Nam, 18-45, Chăm sóc cơ thể", "5,500,000", "47,180", "5,000", "1.0%", "472", "5", "0"], ["Trial Leads", "Mass, Nữ 18-45", "16,000,000", "2,600,038", "2,600", "0.2%", "3,900", "468", "47"], ["Trial Leads", "Nữ, 18-45, Thể thao", "3,500,000", "600", "3,500", "0.2%", "1", "0", "0"], ["Trial Leads", "Nữ, 18-45, Chăm sóc cơ thể", "12,000,000", "38,120", "3,100", "1.0%", "381", "114", "91"], ["Trial Leads", "Nữ, 18-45, đã có con", "8,000,000", "88,000", "7,000", "0.0%", "18", "5", "4"], ["Re-targeting", "Đã xem Quảng cáo (All audience)", "N/A", "27,210", "22,000", "2.0%", "544", "272", "150"], ["Total", "", "", "4,423,362", "0", "0.29%", "12,681", "1,633", "797"]], "source": "Slide gốc 5 — CASE STUDY: LEAD GENERATION", "note": "Slide gốc không đặt câu hỏi dạng câu. Giữ nguyên dòng Total (kể cả CPC = 0) và số liệu gốc; tổng chi tiết một số cột không khớp dòng Total."}];
+const $=x=>document.getElementById(x);
+let active=0, order=-1, asc=true, filter='';
+function key(){return 'tm_original_case_'+cases[active].id}
+function save(){try{localStorage.setItem(key(),$('answer').value)}catch(e){}}
+function render(){const c=cases[active];$('tabs').innerHTML=cases.map((v,i)=>`<button class="tab ${i===active?'active':''}" data-i="${i}">${v.label}</button>`).join('');document.querySelectorAll('[data-i]').forEach(x=>x.onclick=()=>{save();active=+x.dataset.i;order=-1;filter='';render()});$('caseTitle').textContent=c.title;$('situation').textContent=c.situation;$('questionArea').innerHTML=c.question?'<div class="questionbox" id="origQ"></div>':'';if(c.question)$('origQ').textContent=c.question;$('answer').value=localStorage.getItem(key())||'';$('filter').value='';draw()}
+function draw(){let c=cases[active],rows=c.rows.map((r,i)=>({r,i}));if(filter)rows=rows.filter(v=>v.r.some(t=>String(t).toLowerCase().includes(filter.toLowerCase())));if(order>=0)rows.sort((a,b)=>{let va=a.r[order],vb=b.r[order];let na=parseFloat(String(va).replace(/,/g,'').replace('%','')),nb=parseFloat(String(vb).replace(/,/g,'').replace('%',''));let cmp=Number.isFinite(na)&&Number.isFinite(nb)?na-nb:String(va).localeCompare(String(vb),'vi');return asc?cmp:-cmp});$('thead').innerHTML='<tr>'+c.columns.map((k,i)=>`<th data-col="${i}">${k}${order===i?(asc?' ↑':' ↓'):''}</th>`).join('')+'</tr>';$('tbody').innerHTML=rows.map(({r,i})=>'<tr'+(r[0]==='Total'?' style="font-weight:800;background:#f5e9ef"':'')+'>'+r.map(v=>'<td>'+escapeHtml(String(v))+'</td>').join('')+'</tr>').join('');document.querySelectorAll('[data-col]').forEach(e=>e.onclick=()=>{let n=+e.dataset.col;asc=n===order?!asc:true;order=n;draw()})}
+function escapeHtml(s){return s.replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
+$('filter').oninput=e=>{filter=e.target.value;draw()};$('answer').oninput=save;
+
+const SUBMISSION_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyyIT0JC5_Ia5atKuAWCmrR0EM9Zi0FttK-AiEXfUFXjvp7LNGdLYTFC0r9Cjo2_lzHKw/exec'; // Paste the deployed Google Apps Script /exec URL here.
+let pendingSubmission = null;
+let studentName = '';
+try{
+ studentName=localStorage.getItem('tm_student_name')||'';
+ if(!studentName){const previous=JSON.parse(localStorage.getItem('tm_case_submission')||'null');if(previous&&typeof previous.name==='string')studentName=previous.name}
+}catch(e){}
+function rememberStudent(name){
+ studentName=name.trim();
+ try{localStorage.setItem('tm_student_name',studentName)}catch(e){}
+}
+function displayStudent(){
+ $('studentName').value=studentName;
+ $('rememberedName').textContent=studentName;
+ $('rememberedStudent').hidden=!studentName;
+ $('nameEntry').hidden=!!studentName;
+ $('studentName').required=!studentName;
+}
+function submissionId(){
+ // randomUUID is unavailable in some HTTP/preview contexts.
+ if(globalThis.crypto&&typeof crypto.randomUUID==='function')return crypto.randomUUID();
+ if(globalThis.crypto&&typeof crypto.getRandomValues==='function')return Array.from(crypto.getRandomValues(new Uint8Array(16)),n=>n.toString(16).padStart(2,'0')).join('');
+ return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)+'-'+Math.random().toString(36).slice(2);
+}
+// Capture only answered cases; drafts remain editable after each submission.
+function collectAnswers(){
+ return cases.map(c=>({id:c.id,label:c.label,answer:c.id===cases[active].id?$('answer').value:(localStorage.getItem('tm_original_case_'+c.id)||'')})).filter(c=>c.answer.trim());
+}
+function showReceipt(submission){
+ $('receiptName').textContent=submission.name;
+ $('receiptTime').textContent='Thời gian: '+new Date(submission.submittedAt).toLocaleString('vi-VN');
+ $('receiptCount').textContent=submission.answers.length+' case đã nộp';
+ $('receiptAnswers').replaceChildren();
+ submission.answers.forEach(item=>{
+  const card=document.createElement('section');card.className='panel';
+  const heading=document.createElement('h2');heading.textContent=item.label;
+  const answer=document.createElement('div');answer.className='receipt-answer';answer.textContent=item.answer;
+  card.append(heading,answer);$('receiptAnswers').append(card);
+ });
+ $('workspace').hidden=true;$('receipt').hidden=false;
+ window.scrollTo(0,0);$('receiptTitle').focus();
+}
+$('openSubmit').onclick=()=>{
+ $('submitError').textContent='';$('nameError').textContent='';$('storageError').textContent='';$('sendingStatus').textContent='';
+ try{
+  save();const answers=collectAnswers();
+  if(!answers.length){$('submitError').textContent='Hãy nhập câu trả lời cho ít nhất một case trước khi nộp.';$('answer').focus();return}
+  $('submitDescription').textContent='Bạn sẽ nộp '+answers.length+' case đã có câu trả lời. Các case chưa làm không bắt buộc.';
+  displayStudent();
+  $('submitDialog').showModal();
+ }catch(e){$('submitError').textContent='Không thể đọc bản nháp trong trình duyệt. Hãy cho phép lưu trữ trên thiết bị rồi thử lại.'}
+};
+$('submitDialog').addEventListener('cancel',e=>{if($('submitDialog').dataset.sending)e.preventDefault()});
+$('cancelSubmit').onclick=()=>$('submitDialog').close();
+$('changeStudent').onclick=()=>{
+ $('rememberedStudent').hidden=true;$('nameEntry').hidden=false;$('studentName').required=true;$('studentName').focus();$('studentName').select();
+};
+$('studentName').oninput=()=>{$('nameError').textContent='';rememberStudent($('studentName').value)};
+function sendSubmission(submission,signal){
+ // When hosted by Apps Script, use its authenticated RPC bridge instead of cross-site fetch.
+ if(globalThis.google&&google.script&&google.script.run){
+  return new Promise((resolve,reject)=>{
+   let settled=false;
+   const finish=(fn,value)=>{if(settled)return;settled=true;signal.removeEventListener('abort',abort);fn(value)};
+   const abort=()=>{const error=new Error('Timed out');error.name='AbortError';finish(reject,error)};
+   if(signal.aborted){abort();return}
+   signal.addEventListener('abort',abort,{once:true});
+   google.script.run.withSuccessHandler(result=>finish(resolve,result))
+    .withFailureHandler(()=>finish(reject,new Error('Máy chủ chưa xác nhận bài nộp. Vui lòng thử lại.')))
+    .receiveSubmission(submission);
+  });
+ }
+ return fetch(SUBMISSION_ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(submission),signal,credentials:'omit',redirect:'follow'})
+  .then(async response=>{
+   if(!response.ok)throw new Error('Máy chủ trả về lỗi HTTP '+response.status+'.');
+   try{return await response.json()}catch(e){throw new Error('Địa chỉ nhận bài không trả về xác nhận hợp lệ.')}
+  });
+}
+async function submitAnswers(){
+ if($('submitDialog').dataset.sending)return;
+ $('storageError').textContent='';$('nameError').textContent='';$('sendingStatus').textContent='';
+ const name=$('studentName').value.trim();
+ if(!name||name.length>120){$('nameError').textContent='Vui lòng nhập họ và tên học viên (tối đa 120 ký tự).';$('nameEntry').hidden=false;$('rememberedStudent').hidden=true;$('studentName').focus();return}
+ rememberStudent(name);
+ try{
+  save();const answers=collectAnswers();
+  if(!answers.length){$('storageError').textContent='Chưa có câu trả lời để nộp.';return}
+  if(!/^https:\/\/script\.google\.com\/macros\/s\/[^/]+\/exec$/.test(SUBMISSION_ENDPOINT)){
+   $('storageError').textContent='Chưa kết nối Google Sheets của lớp. Vui lòng nhờ trainer cấu hình địa chỉ nhận bài.';return;
+  }
+  const fingerprint=JSON.stringify({name,answers});
+  if(!pendingSubmission || pendingSubmission.fingerprint!==fingerprint){
+   pendingSubmission={fingerprint,submission:{submissionId:submissionId(),name,submittedAt:new Date().toISOString(),answers}};
+  }
+  const submission=pendingSubmission.submission;
+  const confirmButton=$('confirmSubmit');
+  confirmButton.disabled=true;confirmButton.textContent='Đang nộp…';$('cancelSubmit').disabled=true;
+  $('submitDialog').dataset.sending='true';$('changeStudent').disabled=true;$('studentName').disabled=true;
+  $('sendingStatus').textContent='Đang gửi bài đến Google Sheets. Vui lòng chờ…';
+  const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),30000);
+  try{
+   const result=await sendSubmission(submission,controller.signal);
+   if(!result||result.ok!==true)throw new Error(result&&typeof result.error==='string'?result.error:'Google Sheets chưa xác nhận ghi bài.');
+   if(result.submissionId!==submission.submissionId)throw new Error('Mã xác nhận bài nộp không khớp.');
+   try{localStorage.setItem('tm_case_submission',JSON.stringify(submission))}catch(e){}
+   pendingSubmission=null;$('submitDialog').close();showReceipt(submission);
+  }finally{
+   clearTimeout(timeout);confirmButton.disabled=false;confirmButton.textContent='Xác nhận nộp bài';$('cancelSubmit').disabled=false;delete $('submitDialog').dataset.sending;$('changeStudent').disabled=false;$('studentName').disabled=false;$('sendingStatus').textContent='';
+  }
+ }catch(e){
+  const reason=e.name==='AbortError'?'Kết nối quá lâu, chưa nhận được xác nhận.':e instanceof TypeError?'Không nhận được phản hồi từ Google Sheets. Kết nối có thể bị mạng hoặc trình duyệt chặn. Nếu dùng bản xem trước, hãy kiểm tra quyền truy cập script.google.com và script.googleusercontent.com trong môi trường.':e.message;
+  $('storageError').textContent=reason+' Chưa xác nhận nộp thành công. Câu trả lời vẫn được giữ nguyên; bạn có thể thử lại.';
+ }
+
+}
+// Use a click handler: sandboxed previews may block native form submission.
+$('confirmSubmit').onclick=submitAnswers;
+$('submitForm').onsubmit=e=>{e.preventDefault();submitAnswers()};
+$('studentName').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();submitAnswers()}};
+$('continueWorking').onclick=()=>{$('receipt').hidden=true;$('workspace').hidden=false;$('answer').focus()};
+render();
+</script></body></html>

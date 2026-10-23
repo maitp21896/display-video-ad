@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TM Case Lab | Bài nộp học viên</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f7f6f8;color:#242330;font:14px/1.65 system-ui,sans-serif}header{background:#fff;border-bottom:1px solid #e9e5e9;padding:20px 28px;font-weight:800}header b{color:#b92d69}main{max-width:1250px;margin:auto;padding:28px}h1{margin:0;font-size:28px;letter-spacing:-.6px}h2{margin:0 0 12px;font-size:18px}p{margin:8px 0}.muted{color:#696773;font-size:12px}.toolbar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:20px 0}input,select{min-width:180px;padding:11px;border:1px solid #ded9e0;border-radius:8px;font:inherit;background:#fff}input{flex:1}button{font:inherit;cursor:pointer;border:1px solid #ded9e0;border-radius:8px;padding:10px;background:white;color:#242330}button:disabled{cursor:wait;opacity:.6}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #b92d6980;outline-offset:2px}.layout{display:grid;grid-template-columns:310px minmax(0,1fr);gap:20px}.card{background:white;border:1px solid #e9e5e9;border-radius:12px;padding:22px;margin-bottom:12px}.student{display:block;width:100%;text-align:left;margin-bottom:8px;padding:14px}.student.active{border-color:#b92d69;background:#fff1f7}.student strong,.student span{display:block}.answer{white-space:pre-wrap;overflow-wrap:anywhere}.label{color:#b92d69}#status{min-height:20px}#detail{min-width:0}#error{color:#a32347}#error:empty{display:none}#students{max-height:75vh;overflow:auto}label{display:block;font-size:12px;font-weight:650;margin-bottom:5px}.search-field{flex:1}.search-field input{width:100%}.toolbar>button{align-self:flex-end;min-height:46px}@media(max-width:650px){.layout{grid-template-columns:1fr}main{padding:18px}header{padding:16px}#students{max-height:280px}input,select{min-width:0;width:100%}.search-field,.case-field{flex-basis:100%}}
+</style>
+</head>
+<body>
+<header>TOMORROW <b>MARKETERS</b> · CASE LAB</header>
+<main>
+<h1>Bài nộp học viên</h1>
+<p class="muted">Chọn học viên để xem bài làm. Danh sách tự cập nhật mỗi 15 giây.</p>
+<div class="toolbar">
+<div class="search-field"><label for="search">Tên học viên</label><input id="search" placeholder="Tìm tên học viên…" type="search"></div>
+<div class="case-field"><label for="caseFilter">Case</label><select id="caseFilter"><option value="">Tất cả case</option><option value="reach">01 · Lựa chọn phương án</option><option value="creative">02 · Thông điệp / kích thước</option><option value="traffic">03 · Traffic &amp; đơn hàng</option><option value="cpc">04 · Giá thầu &amp; tỷ lệ click</option><option value="leads">05 · Lead generation</option></select></div>
+<button id="refresh" type="button">Làm mới</button>
+</div>
+<p id="status" class="muted" role="status" aria-live="polite">Đang tải bài nộp…</p>
+<p id="error" role="alert"></p>
+<div class="layout"><nav id="students" aria-label="Danh sách bài nộp"></nav><section id="detail" aria-label="Chi tiết bài nộp"></section></div>
+</main>
+<script>
+let submissions=[],selected=null,busy=false,lastUpdated='';
+const $=id=>document.getElementById(id);
+function element(tag,text,className){const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(className)el.className=className;return el}
+function normalize(text){return text.toLocaleLowerCase('vi').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d')}
+function render(){
+ const query=normalize($('search').value.trim());
+ const caseId=$('caseFilter').value;
+ const filtered=submissions.filter(s=>normalize(s.name).includes(query)&&(!caseId||s.answers.some(a=>a.id===caseId)));
+ if(!filtered.some(s=>s.id===selected))selected=filtered.length?filtered[0].id:null;
+ $('students').replaceChildren();
+ if(!filtered.length)$('students').append(element('p',submissions.length?'Không tìm thấy bài nộp phù hợp.':'Chưa có bài nộp.','muted'));
+ filtered.forEach(s=>{
+  const button=element('button',undefined,'student'+(s.id===selected?' active':''));button.type='button';button.setAttribute('aria-pressed',String(s.id===selected));
+  button.append(element('strong',s.name),element('span',s.time+' · '+s.answers.length+' case','muted'));
+  button.onclick=()=>{selected=s.id;render()};$('students').append(button);
+ });
+ const submission=filtered.find(s=>s.id===selected);$('detail').replaceChildren();
+ if(!submission){$('detail').append(element('p','Bài làm của học viên sẽ hiển thị tại đây.','card'))}
+ else{
+  const header=element('div',undefined,'card');header.append(element('h2',submission.name),element('p',submission.time+' · '+submission.answers.length+' case đã nộp','muted'));$('detail').append(header);
+  submission.answers.filter(a=>!caseId||a.id===caseId).forEach(a=>{const card=element('article',undefined,'card');card.append(element('h2',a.label,'label'),element('div',a.answer,'answer'));$('detail').append(card)});
+ }
+ $('status').textContent=filtered.length+' / '+submissions.length+' lần nộp'+(lastUpdated?' · Cập nhật '+lastUpdated:'');
+}
+function refresh(){
+ if(busy)return;
+ busy=true;$('refresh').disabled=true;$('refresh').textContent='Đang tải…';
+ let settled=false;
+ const finish=()=>{if(settled)return false;settled=true;clearTimeout(timer);busy=false;$('refresh').disabled=false;$('refresh').textContent='Làm mới';return true};
+ const fail=()=>{if(!finish())return;$('error').textContent='Chưa tải được bài nộp mới. Bấm Làm mới để thử lại.'};
+ const timer=setTimeout(fail,30000);
+ if(!globalThis.google||!google.script||!google.script.run){fail();return}
+ google.script.run.withSuccessHandler(data=>{
+  if(!Array.isArray(data)){fail();return}
+  if(!finish())return;
+  submissions=data;lastUpdated=new Date().toLocaleTimeString('vi-VN');$('error').textContent='';render();
+ }).withFailureHandler(fail).getTrainerSubmissions();
+}
+$('search').oninput=render;$('caseFilter').onchange=render;$('refresh').onclick=refresh;
+refresh();setInterval(()=>{if(!document.hidden)refresh()},15000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh()});
+</script>
+</body>
+</html>
