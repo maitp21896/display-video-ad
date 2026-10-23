@@ -52,11 +52,11 @@ function refresh(){
  busy=true;$('refresh').disabled=true;$('refresh').textContent='Đang tải…';
  let settled=false;
  const finish=()=>{if(settled)return false;settled=true;clearTimeout(timer);busy=false;$('refresh').disabled=false;$('refresh').textContent='Làm mới';return true};
- const fail=()=>{if(!finish())return;$('error').textContent='Chưa tải được bài nộp mới. Bấm Làm mới để thử lại.'};
+ const fail=error=>{if(!finish())return;$('status').textContent=lastUpdated?'Đang hiển thị dữ liệu cập nhật lúc '+lastUpdated:'Chưa tải được danh sách bài nộp.';$('error').textContent=(error?.apiMessage||'Không kết nối được dịch vụ đọc bài. Các bài đã lưu trong Google Sheets vẫn được giữ nguyên.')+' Bấm Làm mới để thử lại.'};
  const timer=setTimeout(fail,30000);
  fetch('/api/submissions',{cache:'no-store',signal:AbortSignal.timeout(25000)}).then(async response=>{
   const result=await response.json();
-  if(!response.ok||!result.ok)throw new Error('Could not load submissions');
+  if(!response.ok||!result.ok){const error=new Error('Could not load submissions');if(typeof result.error==='string')error.apiMessage=result.error;throw error}
   return result.submissions;
  }).then(data=>{
   if(!Array.isArray(data)){fail();return}
