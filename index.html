@@ -46,6 +46,10 @@ table[data-case="creative"] tr.source-total td{background:#f2f2f2;font-weight:80
 table[data-case="traffic"] th{background:#f2f2f2;color:#242330;font-weight:800}
 table[data-case="traffic"] td.source-outcome{background:#fff2df}
 table[data-case="traffic"] tr.source-total td{background:#f2f2f2;font-weight:800}
+/* DHC highlights match CPC and CTR in the supplied source table. */
+table[data-case="cpc"] th{background:#f2f2f2;color:#242330;font-weight:800}
+table[data-case="cpc"] td.source-cost-rate{background:#fff2df}
+table[data-case="cpc"] tr.source-total td{background:#f2f2f2;font-weight:800}
 aside{position:sticky;top:24px}
 aside .panel{border-top:3px solid var(--pink)}
 .answerlabel{font-size:12px;color:#514b59;margin-top:22px}
@@ -80,6 +84,7 @@ function render(){const c=cases[active];$('tabs').innerHTML=cases.map((v,i)=>`<b
 function sourceCellClass(c,row,column){
  if(row[0]==='Total')return '';
  if(c.id==='traffic')return column>=6&&column<=8?'source-outcome':'';
+ if(c.id==='cpc')return column===6||column===7?'source-cost-rate':'';
  if(c.id!=='creative')return '';
  if(column===1)return 'source-size';
  if(column===5){
@@ -88,7 +93,7 @@ function sourceCellClass(c,row,column){
  }
  return '';
 }
-function draw(){let c=cases[active];$('tbody').closest('table').dataset.case=c.id;let rows=c.rows.map((r,i)=>({r,i}));if(filter)rows=rows.filter(v=>v.r.some(t=>String(t).toLowerCase().includes(filter.toLowerCase())));if(order>=0)rows.sort((a,b)=>{let va=a.r[order],vb=b.r[order];let na=parseFloat(String(va).replace(/,/g,'').replace('%','')),nb=parseFloat(String(vb).replace(/,/g,'').replace('%',''));let cmp=Number.isFinite(na)&&Number.isFinite(nb)?na-nb:String(va).localeCompare(String(vb),'vi');return asc?cmp:-cmp});$('thead').innerHTML='<tr>'+c.columns.map((k,i)=>`<th data-col="${i}">${k}${order===i?(asc?' ↑':' ↓'):''}</th>`).join('')+'</tr>';$('tbody').innerHTML=rows.map(({r,i})=>'<tr'+(r[0]==='Total'?(['creative','traffic'].includes(c.id)?' class="source-total"':' style="font-weight:800;background:#f5e9ef"'):'')+'>'+r.map((v,column)=>'<td class="'+sourceCellClass(c,r,column)+'">'+escapeHtml(String(v))+'</td>').join('')+'</tr>').join('');document.querySelectorAll('[data-col]').forEach(e=>e.onclick=()=>{let n=+e.dataset.col;asc=n===order?!asc:true;order=n;draw()})}
+function draw(){let c=cases[active];$('tbody').closest('table').dataset.case=c.id;let rows=c.rows.map((r,i)=>({r,i}));if(filter)rows=rows.filter(v=>v.r.some(t=>String(t).toLowerCase().includes(filter.toLowerCase())));if(order>=0)rows.sort((a,b)=>{let va=a.r[order],vb=b.r[order];let na=parseFloat(String(va).replace(/,/g,'').replace('%','')),nb=parseFloat(String(vb).replace(/,/g,'').replace('%',''));let cmp=Number.isFinite(na)&&Number.isFinite(nb)?na-nb:String(va).localeCompare(String(vb),'vi');return asc?cmp:-cmp});$('thead').innerHTML='<tr>'+c.columns.map((k,i)=>`<th data-col="${i}">${k}${order===i?(asc?' ↑':' ↓'):''}</th>`).join('')+'</tr>';$('tbody').innerHTML=rows.map(({r,i})=>'<tr'+(r[0]==='Total'?(['creative','traffic','cpc'].includes(c.id)?' class="source-total"':' style="font-weight:800;background:#f5e9ef"'):'')+'>'+r.map((v,column)=>'<td class="'+sourceCellClass(c,r,column)+'">'+escapeHtml(String(v))+'</td>').join('')+'</tr>').join('');document.querySelectorAll('[data-col]').forEach(e=>e.onclick=()=>{let n=+e.dataset.col;asc=n===order?!asc:true;order=n;draw()})}
 function escapeHtml(s){return s.replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
 $('filter').oninput=e=>{filter=e.target.value;draw()};$('answer').oninput=save;
 
