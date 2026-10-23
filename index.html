@@ -42,6 +42,10 @@ table[data-case="creative"] td.source-size{background:#fff2df}
 table[data-case="creative"] td.source-ctr-green{background:#c6efce;color:#276321}
 table[data-case="creative"] td.source-ctr-red{background:#f4cccc;color:#9c2320}
 table[data-case="creative"] tr.source-total td{background:#f2f2f2;font-weight:800}
+/* Uniqlo highlights match the three outcome columns in the source table. */
+table[data-case="traffic"] th{background:#f2f2f2;color:#242330;font-weight:800}
+table[data-case="traffic"] td.source-outcome{background:#fff2df}
+table[data-case="traffic"] tr.source-total td{background:#f2f2f2;font-weight:800}
 aside{position:sticky;top:24px}
 aside .panel{border-top:3px solid var(--pink)}
 .answerlabel{font-size:12px;color:#514b59;margin-top:22px}
@@ -74,7 +78,9 @@ function readDraft(id){if(Object.hasOwn(draftMemory,id))return draftMemory[id];t
 function save(){draftMemory[key()]=$('answer').value;try{localStorage.setItem(key(),$('answer').value)}catch(e){}}
 function render(){const c=cases[active];$('tabs').innerHTML=cases.map((v,i)=>`<button class="tab ${i===active?'active':''}" data-i="${i}">${v.label}</button>`).join('');document.querySelectorAll('[data-i]').forEach(x=>x.onclick=()=>{save();active=+x.dataset.i;order=-1;filter='';render()});$('caseTitle').textContent=c.title;$('situation').textContent=c.situation;$('questionArea').innerHTML=c.question?'<div class="questionbox" id="origQ"></div>':'';if(c.question)$('origQ').textContent=c.question;$('answer').value=readDraft(key());$('filter').value='';draw()}
 function sourceCellClass(c,row,column){
- if(c.id!=='creative'||row[0]==='Total')return '';
+ if(row[0]==='Total')return '';
+ if(c.id==='traffic')return column>=6&&column<=8?'source-outcome':'';
+ if(c.id!=='creative')return '';
  if(column===1)return 'source-size';
  if(column===5){
   const highlights={'Tangluong-1A':'green','Tangluong-1B':'red','Thunhap-2A':'red','Thunhap-2B':'green','Nhandoi-3A':'green','Nhandoi-3B':'red'};
@@ -82,7 +88,7 @@ function sourceCellClass(c,row,column){
  }
  return '';
 }
-function draw(){let c=cases[active];$('tbody').closest('table').dataset.case=c.id;let rows=c.rows.map((r,i)=>({r,i}));if(filter)rows=rows.filter(v=>v.r.some(t=>String(t).toLowerCase().includes(filter.toLowerCase())));if(order>=0)rows.sort((a,b)=>{let va=a.r[order],vb=b.r[order];let na=parseFloat(String(va).replace(/,/g,'').replace('%','')),nb=parseFloat(String(vb).replace(/,/g,'').replace('%',''));let cmp=Number.isFinite(na)&&Number.isFinite(nb)?na-nb:String(va).localeCompare(String(vb),'vi');return asc?cmp:-cmp});$('thead').innerHTML='<tr>'+c.columns.map((k,i)=>`<th data-col="${i}">${k}${order===i?(asc?' ↑':' ↓'):''}</th>`).join('')+'</tr>';$('tbody').innerHTML=rows.map(({r,i})=>'<tr'+(r[0]==='Total'?(c.id==='creative'?' class="source-total"':' style="font-weight:800;background:#f5e9ef"'):'')+'>'+r.map((v,column)=>'<td class="'+sourceCellClass(c,r,column)+'">'+escapeHtml(String(v))+'</td>').join('')+'</tr>').join('');document.querySelectorAll('[data-col]').forEach(e=>e.onclick=()=>{let n=+e.dataset.col;asc=n===order?!asc:true;order=n;draw()})}
+function draw(){let c=cases[active];$('tbody').closest('table').dataset.case=c.id;let rows=c.rows.map((r,i)=>({r,i}));if(filter)rows=rows.filter(v=>v.r.some(t=>String(t).toLowerCase().includes(filter.toLowerCase())));if(order>=0)rows.sort((a,b)=>{let va=a.r[order],vb=b.r[order];let na=parseFloat(String(va).replace(/,/g,'').replace('%','')),nb=parseFloat(String(vb).replace(/,/g,'').replace('%',''));let cmp=Number.isFinite(na)&&Number.isFinite(nb)?na-nb:String(va).localeCompare(String(vb),'vi');return asc?cmp:-cmp});$('thead').innerHTML='<tr>'+c.columns.map((k,i)=>`<th data-col="${i}">${k}${order===i?(asc?' ↑':' ↓'):''}</th>`).join('')+'</tr>';$('tbody').innerHTML=rows.map(({r,i})=>'<tr'+(r[0]==='Total'?(['creative','traffic'].includes(c.id)?' class="source-total"':' style="font-weight:800;background:#f5e9ef"'):'')+'>'+r.map((v,column)=>'<td class="'+sourceCellClass(c,r,column)+'">'+escapeHtml(String(v))+'</td>').join('')+'</tr>').join('');document.querySelectorAll('[data-col]').forEach(e=>e.onclick=()=>{let n=+e.dataset.col;asc=n===order?!asc:true;order=n;draw()})}
 function escapeHtml(s){return s.replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
 $('filter').oninput=e=>{filter=e.target.value;draw()};$('answer').oninput=save;
 
