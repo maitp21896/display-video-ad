@@ -69,7 +69,7 @@ function draw(){let c=cases[active],rows=c.rows.map((r,i)=>({r,i}));if(filter)ro
 function escapeHtml(s){return s.replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]))}
 $('filter').oninput=e=>{filter=e.target.value;draw()};$('answer').oninput=save;
 
-const SUBMISSION_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyyIT0JC5_Ia5atKuAWCmrR0EM9Zi0FttK-AiEXfUFXjvp7LNGdLYTFC0r9Cjo2_lzHKw/exec'; // Paste the deployed Google Apps Script /exec URL here.
+const SUBMISSION_ENDPOINT = 'https://script.google.com/macros/s/AKfycby4Qi2U4uPOmU3OFiLT9vLxO5J5gSgKYtTsrI5M_2IQWJPKXIt8bkGXR9DloB0aeRagFA/exec'; // Paste the deployed Google Apps Script /exec URL here.
 let pendingSubmission = null;
 let studentName = '';
 try{
